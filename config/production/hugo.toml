@@ -1,1 +1,8 @@
 baseURL = 'https://carrotflakes.github.io/crxv/'
+
+[params]
+menu = [
+  {name = 'home', url = 'https://carrotflakes.github.io/crxv/'},
+  {name = 'posts', url = 'https://carrotflakes.github.io/crxv/posts/'},
+  {name = 'github', url = 'https://github.com/carrotflakes/crxv'},
+]
