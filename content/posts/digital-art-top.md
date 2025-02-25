@@ -28,16 +28,16 @@ title = 'デジタルアート入門'
 - [テクスチャの表現](/posts/texture-basics)
 
 ### 4. 応用技法
-- [キャラクターデザイン](/posts/character-design)
-- [背景の描き方](/posts/background-art)
-- [構図とレイアウト](/posts/composition)
-- [色彩設計](/posts/color-design)
+- ~~[キャラクターデザイン](/posts/character-design)~~
+- ~~[背景の描き方](/posts/background-art)~~
+- ~~[構図とレイアウト](/posts/composition)~~
+- ~~[色彩設計](/posts/color-design)~~
 
 ### 5. 上級テクニック
-- [エフェクトの描き方](/posts/effects)
-- [質感表現の応用](/posts/advanced-textures)
-- [動きの表現](/posts/dynamic-poses)
-- [感情表現とストーリーテリング](/posts/storytelling)
+- ~~[エフェクトの描き方](/posts/effects)~~
+- ~~[質感表現の応用](/posts/advanced-textures)~~
+- ~~[動きの表現](/posts/dynamic-poses)~~
+- ~~[感情表現とストーリーテリング](/posts/storytelling)~~
 
 ## これから始める方へ
 
