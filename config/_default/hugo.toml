@@ -1,4 +1,4 @@
-baseURL = 'https://carrotflakes.github.io/crxv/'
+baseURL = 'https://example.org/'
 languageCode = 'ja'
 title = 'CRXV'
 theme = 'typo'
