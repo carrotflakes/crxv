@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
-languageCode = 'en-us'
+baseURL = 'https://carrotflakes.github.io/crxv/'
+languageCode = 'ja'
 title = 'CRXV'
 theme = 'typo'
