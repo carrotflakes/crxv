@@ -5,3 +5,8 @@ theme = 'typo'
 
 [params]
 paginationSize = 100
+menu = [
+  {name = 'home', url = '/'},
+  {name = 'posts', url = '/posts/'},
+  {name = 'github', url = 'https://github.com/carrotflakes/crxv'},
+]
