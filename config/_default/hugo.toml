@@ -2,3 +2,6 @@ baseURL = 'https://example.org/'
 languageCode = 'ja'
 title = 'CRXV'
 theme = 'typo'
+
+[params]
+paginationSize = 100
