@@ -2,7 +2,7 @@ name: Issue to post
 
 on:
   issues:
-    types: [opened]
+    types: [opened, edited, reopened]
 
 jobs:
   save-issue:
@@ -19,14 +19,16 @@ jobs:
       - name: Create content file
         run: |
           # Create content directory if it doesn't exist
-          mkdir -p content/issue
+          mkdir -p content/posts/issue
           
           # Use environment variables to safely handle the issue body
-          ISSUE_BODY="${{ toJSON(github.event.issue.body) }}"
+          read -r ISSUE_BODY <<'EOFEOFEOF'
+          ${{ toJSON(github.event.issue.body) }}
+          EOFEOFEOF
           # Extract sections using safer methods
           TITLE=$(echo "$ISSUE_BODY" | jq -r '
             split("\n") |
-            [.[index("### Title")+1:index("### Content")]] |
+            .[index("### Title")+1:index("### Content")] |
             map(select(length > 0)) |
             join(" ")
           ')
@@ -38,7 +40,7 @@ jobs:
           WRITER="${{ github.event.issue.user.login }}"
           
           # Convert title to filename-safe format using safer method
-          SAFE_TITLE=$(echo "$TITLE" | tr '[:space:]' '-' | tr -cd '[:alnum:]-')
+          SAFE_TITLE=$(echo "$TITLE" | tr '[:space:]' '-' | tr -cd '[:alnum:]-' | sed 's/-*$//')
 
           # Create temporary file with proper escaping
           jq -n \
@@ -51,12 +53,12 @@ jobs:
           # Create the markdown file using jq for proper escaping
           jq -r '"+++
           date = \(.date)
-          title = \(.title)
+          title = \(.title|@json)
           draft = false
-          writer = \(.writer)
+          writer = \(.writer|@json)
           +++
 
-          \(.content)"' temp.json > "content/issue/${SAFE_TITLE}.md"
+          \(.content)"' temp.json > "content/posts/issue/${SAFE_TITLE}.md"
 
           rm temp.json
 
@@ -64,7 +66,7 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add content/issue/
+          git add content/posts/issue/
           git commit -m "Add content from issue: ${{ github.event.issue.number }}"
           git push
 
