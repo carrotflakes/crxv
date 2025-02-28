@@ -1,0 +1,18 @@
+name: generate-content
+description: Use this template to generate new content
+title: "Generate content"
+labels: ["content"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not change the title of this issue.
+
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Prompt
+      description: Provide a prompt for generating content
+      placeholder: "Enter prompt here"

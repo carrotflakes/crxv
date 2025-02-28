@@ -1,14 +1,14 @@
-name: Issue to post
+name: Issue to generate
 
 on:
   issues:
     types: [opened, edited, reopened]
 
 jobs:
-  save-issue:
+  generate:
     if: >
       github.event.issue.user.login == 'carrotflakes' &&
-      github.event.issue.title == 'Add content'
+      github.event.issue.title == 'Generate content'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -25,20 +25,41 @@ jobs:
           read -r ISSUE_BODY <<'EOFEOFEOF'
           ${{ toJSON(github.event.issue.body) }}
           EOFEOFEOF
-
+          
           # Extract sections using safer methods
-          TITLE=$(echo "$ISSUE_BODY" | jq -r '
+          PROMPT=$(echo "$ISSUE_BODY" | jq -r '
             split("\n") |
-            .[index("### Title")+1:index("### Content")] |
-            map(select(length > 0)) |
-            join(" ")
-          ')
-          CONTENT=$(echo "$ISSUE_BODY" | jq -r '
-            split("\n") |
-            .[index("### Content")+1:] |
-            join("\n")
+            .[index("### Prompt")+1:] |
+            join("\n") |
+            @json
           ')
           WRITER="${{ github.event.issue.user.login }}"
+
+          RESPONSE=$(curl "https://api.openai.com/v1/chat/completions" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $OPENAI_API_KEY" \
+            -d '{
+                "model": "gpt-4o",
+                "messages": [
+                    {
+                        "role": "developer",
+                        "content": "Your task is to write a blog post.\nPlease output the blog post title and the content as a markdown string.\n\n<Output example>\n# {{ title }}\n\n{{ content }}\n</Output example>"
+                    },
+                    {
+                        "role": "user",
+                        "content": '$PROMPT'
+                    }
+                ]
+            }')
+          echo "$RESPONSE" | jq
+
+          RESBODY=$(echo "$RESPONSE" | jq -r '.choices[0].message.content')
+
+          TITLE=$(echo "$RESBODY" | sed -n 's/^# \(.*\)/\1/p')
+          CONTENT=$(echo "$RESBODY" | sed -n '/^# /,$p' | sed '1d')
+
+          echo "Title: $TITLE"
+          echo "Content: $CONTENT"
           
           # Convert title to filename-safe format using safer method
           SAFE_TITLE=$(echo "$TITLE" | tr '[:space:]' '-' | tr -cd '[:alnum:]-' | sed 's/-*$//')
@@ -62,6 +83,8 @@ jobs:
           \(.content)"' temp.json > "content/posts/issue/${SAFE_TITLE}.md"
 
           rm temp.json
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Commit and push changes
         run: |
