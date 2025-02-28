@@ -5,7 +5,7 @@ on:
     types: [opened, edited, reopened]
 
 jobs:
-  save-issue:
+  add-content:
     if: >
       github.event.issue.user.login == 'carrotflakes' &&
       github.event.issue.title == 'Add content'
@@ -67,6 +67,108 @@ jobs:
           \(.content)"' temp.json > "content/posts/issue/${SAFE_TITLE}.md"
 
           rm temp.json
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add content/posts/issue/
+          git commit -m "Add content from issue: #${{ github.event.issue.number }}"
+          git push
+
+      - name: Close issue
+        run: |
+          curl -X PATCH \
+            -H "Authorization: token ${{ github.token }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}" \
+            -d '{"state":"closed"}'
+
+  generate-content:
+    if: >
+      github.event.issue.user.login == 'carrotflakes' &&
+      github.event.issue.title == 'Generate content'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create content file
+        run: |
+          # Create content directory if it doesn't exist
+          mkdir -p content/posts/issue
+
+          # Use environment variables to safely handle the issue body
+          read -r ISSUE_BODY <<'EOFEOFEOF'
+          ${{ toJSON(github.event.issue.body) }}
+          EOFEOFEOF
+
+          # Extract sections using safer methods
+          PROMPT=$(echo "$ISSUE_BODY" | jq -r '
+            split("\n") |
+            .[index("### Prompt")+1:] |
+            join("\n") |
+            @json
+          ')
+          WRITER="${{ github.event.issue.user.login }}"
+
+          RESPONSE=$(curl "https://api.openai.com/v1/chat/completions" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $OPENAI_API_KEY" \
+            -d '{
+                "model": "gpt-4o",
+                "messages": [
+                    {
+                        "role": "developer",
+                        "content": "Your task is to write a blog post.\nPlease output the blog post title and the content as a markdown string.\n\n<Output example>\n# {{ title }}\n\n{{ content }}\n</Output example>"
+                    },
+                    {
+                        "role": "user",
+                        "content": '$PROMPT'
+                    }
+                ]
+            }')
+          echo "$RESPONSE" | jq
+
+          RESBODY=$(echo "$RESPONSE" | jq -r '.choices[0].message.content')
+
+          TITLE=$(echo "$RESBODY" | sed -n 's/^# \(.*\)/\1/p')
+          CONTENT=$(echo "$RESBODY" | sed -n '/^# /,$p' | sed '1d')
+
+          echo "Title: $TITLE"
+          echo "Content: $CONTENT"
+
+          # Convert title to filename-safe format using safer method
+          SAFE_TITLE=$(echo "$TITLE" | tr '[:space:]' '-' | tr -cd '[:alnum:]-' | sed 's/-*$//')
+
+          # Use issue number if SAFE_TITLE is empty
+          if [ -z "$SAFE_TITLE" ]; then
+            SAFE_TITLE="issue-${{ github.event.issue.number }}"
+          fi
+
+          # Create temporary file with proper escaping
+          jq -n \
+            --arg date "${{ github.event.issue.created_at }}" \
+            --arg title "$TITLE" \
+            --arg writer "$WRITER" \
+            --arg content "$CONTENT" \
+            '{date: $date, title: $title, writer: $writer, content: $content}' > temp.json
+
+          # Create the markdown file using jq for proper escaping
+          jq -r '"+++
+          date = \(.date)
+          title = \(.title|@json)
+          draft = false
+          writer = \(.writer|@json)
+          +++
+
+          \(.content)"' temp.json > "content/posts/issue/${SAFE_TITLE}.md"
+
+          rm temp.json
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Commit and push changes
         run: |
