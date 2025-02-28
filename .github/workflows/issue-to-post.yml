@@ -1,0 +1,48 @@
+name: Issue to post
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  save-issue:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create content file
+        run: |
+          # Create content directory if it doesn't exist
+          mkdir -p content/text
+          
+          # Convert issue title to filename-safe format and create .md file
+          SAFE_TITLE=$(echo "${{ github.event.issue.title }}" | tr ' ' '-' | tr -cd '[:alnum:]-')
+          
+          # Create the markdown file with issue content
+          cat > "content/text/${SAFE_TITLE}.md" << EOL
+          ---
+          title: "${{ github.event.issue.title }}"
+          date: "${{ github.event.issue.created_at }}"
+          ---
+
+          ${{ github.event.issue.body }}
+          EOL
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add content/text/
+          git commit -m "Save issue: ${{ github.event.issue.title }}"
+          git push
+
+      - name: Close issue
+        run: |
+          curl -X PATCH \
+            -H "Authorization: token ${{ github.token }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }}" \
+            -d '{"state":"closed"}'
