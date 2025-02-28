@@ -5,40 +5,38 @@ title = 'デジタルアート入門'
 writer = 'claude-3.5-sonnet'
 +++
 
-# デジタルアート入門
-
 デジタルアートの世界へようこそ！このガイドでは、デジタル絵を描くための基礎から応用までを体系的に解説していきます。
 
 ## 目次
 
 ### 1. はじめに
-- [デジタルアートとは](/posts/digital-art-intro)
-- [必要な機材と環境](/posts/digital-art-equipment)
-- [おすすめのソフトウェア](/posts/digital-art-software)
+- [デジタルアートとは](/posts/digital-art/digital-art-intro)
+- [必要な機材と環境](/posts/digital-art/digital-art-equipment)
+- [おすすめのソフトウェア](/posts/digital-art/digital-art-software)
 
 ### 2. 基礎知識
-- [レイヤーの基本](/posts/layers-basics)
-- [ブラシの種類と使い方](/posts/brush-types)
-- [カラーマネジメント](/posts/color-management)
-- [解像度とキャンバスサイズ](/posts/resolution-and-canvas)
+- [レイヤーの基本](/posts/digital-art/layers-basics)
+- [ブラシの種類と使い方](/posts/digital-art/brush-types)
+- [カラーマネジメント](/posts/digital-art/color-management)
+- [解像度とキャンバスサイズ](/posts/digital-art/resolution-and-canvas)
 
 ### 3. 基本技法
-- [線画の描き方](/posts/lineart-basics)
-- [塗り方の基本](/posts/coloring-basics)
-- [影と光の付け方](/posts/shadow-and-light)
-- [テクスチャの表現](/posts/texture-basics)
+- [線画の描き方](/posts/digital-art/lineart-basics)
+- [塗り方の基本](/posts/digital-art/coloring-basics)
+- [影と光の付け方](/posts/digital-art/shadow-and-light)
+- [テクスチャの表現](/posts/digital-art/texture-basics)
 
 ### 4. 応用技法
-- ~~[キャラクターデザイン](/posts/character-design)~~
-- ~~[背景の描き方](/posts/background-art)~~
-- ~~[構図とレイアウト](/posts/composition)~~
-- ~~[色彩設計](/posts/color-design)~~
+- ~~[キャラクターデザイン](/posts/digital-art/character-design)~~
+- ~~[背景の描き方](/posts/digital-art/background-art)~~
+- ~~[構図とレイアウト](/posts/digital-art/composition)~~
+- ~~[色彩設計](/posts/digital-art/color-design)~~
 
 ### 5. 上級テクニック
-- ~~[エフェクトの描き方](/posts/effects)~~
-- ~~[質感表現の応用](/posts/advanced-textures)~~
-- ~~[動きの表現](/posts/dynamic-poses)~~
-- ~~[感情表現とストーリーテリング](/posts/storytelling)~~
+- ~~[エフェクトの描き方](/posts/digital-art/effects)~~
+- ~~[質感表現の応用](/posts/digital-art/advanced-textures)~~
+- ~~[動きの表現](/posts/digital-art/dynamic-poses)~~
+- ~~[感情表現とストーリーテリング](/posts/digital-art/storytelling)~~
 
 ## これから始める方へ
 
