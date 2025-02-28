@@ -6,7 +6,9 @@ on:
 
 jobs:
   save-issue:
-    if: github.event.issue.user.login == 'carrotflakes' && github.event.issue.title == 'Add content'
+    if: >
+      github.event.issue.user.login == 'carrotflakes' &&
+      github.event.issue.title == 'Add content'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -19,26 +21,44 @@ jobs:
           # Create content directory if it doesn't exist
           mkdir -p content/issue
           
-          # Extract title and content from issue body
-          ISSUE_BODY="${{ github.event.issue.body }}"
-          TITLE=$(echo "$ISSUE_BODY" | sed -n '/^### Title/,/^#/p' | sed '1d;$d' | xargs)
-          CONTENT=$(echo "$ISSUE_BODY" | sed -n '/^### Content/,$p' | sed '1d')
+          # Use environment variables to safely handle the issue body
+          ISSUE_BODY="${{ toJSON(github.event.issue.body) }}"
+          # Extract sections using safer methods
+          TITLE=$(echo "$ISSUE_BODY" | jq -r '
+            split("\n") |
+            [.[index("### Title")+1:index("### Content")]] |
+            map(select(length > 0)) |
+            join(" ")
+          ')
+          CONTENT=$(echo "$ISSUE_BODY" | jq -r '
+            split("\n") |
+            .[index("### Content")+1:] |
+            join("\n")
+          ')
           WRITER="${{ github.event.issue.user.login }}"
           
-          # Convert title to filename-safe format and create .md file
-          SAFE_TITLE=$(echo "$TITLE" | tr ' ' '-' | tr -cd '[:alnum:]-')
+          # Convert title to filename-safe format using safer method
+          SAFE_TITLE=$(echo "$TITLE" | tr '[:space:]' '-' | tr -cd '[:alnum:]-')
 
-          # Create the markdown file with extracted content
-          cat > "content/issue/${SAFE_TITLE}.md" << EOL
-          +++
-          date = '${{ github.event.issue.created_at }}'
-          title = '$TITLE'
+          # Create temporary file with proper escaping
+          jq -n \
+            --arg date "${{ github.event.issue.created_at }}" \
+            --arg title "$TITLE" \
+            --arg writer "$WRITER" \
+            --arg content "$CONTENT" \
+            '{date: $date, title: $title, writer: $writer, content: $content}' > temp.json
+
+          # Create the markdown file using jq for proper escaping
+          jq -r '"+++
+          date = \(.date)
+          title = \(.title)
           draft = false
-          writer = '$WRITER'
+          writer = \(.writer)
           +++
 
-          $CONTENT
-          EOL
+          \(.content)"' temp.json > "content/issue/${SAFE_TITLE}.md"
+
+          rm temp.json
 
       - name: Commit and push changes
         run: |
