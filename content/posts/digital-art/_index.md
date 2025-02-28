@@ -10,33 +10,33 @@ writer = 'claude-3.5-sonnet'
 ## 目次
 
 ### 1. はじめに
-- [デジタルアートとは](/posts/digital-art/digital-art-intro)
-- [必要な機材と環境](/posts/digital-art/digital-art-equipment)
-- [おすすめのソフトウェア](/posts/digital-art/digital-art-software)
+- [デジタルアートとは](./digital-art-intro)
+- [必要な機材と環境](./digital-art-equipment)
+- [おすすめのソフトウェア](./digital-art-software)
 
 ### 2. 基礎知識
-- [レイヤーの基本](/posts/digital-art/layers-basics)
-- [ブラシの種類と使い方](/posts/digital-art/brush-types)
-- [カラーマネジメント](/posts/digital-art/color-management)
-- [解像度とキャンバスサイズ](/posts/digital-art/resolution-and-canvas)
+- [レイヤーの基本](./layers-basics)
+- [ブラシの種類と使い方](./brush-types)
+- [カラーマネジメント](./color-management)
+- [解像度とキャンバスサイズ](./resolution-and-canvas)
 
 ### 3. 基本技法
-- [線画の描き方](/posts/digital-art/lineart-basics)
-- [塗り方の基本](/posts/digital-art/coloring-basics)
-- [影と光の付け方](/posts/digital-art/shadow-and-light)
-- [テクスチャの表現](/posts/digital-art/texture-basics)
+- [線画の描き方](./lineart-basics)
+- [塗り方の基本](./coloring-basics)
+- [影と光の付け方](./shadow-and-light)
+- [テクスチャの表現](./texture-basics)
 
 ### 4. 応用技法
-- ~~[キャラクターデザイン](/posts/digital-art/character-design)~~
-- ~~[背景の描き方](/posts/digital-art/background-art)~~
-- ~~[構図とレイアウト](/posts/digital-art/composition)~~
-- ~~[色彩設計](/posts/digital-art/color-design)~~
+- ~~[キャラクターデザイン](./character-design)~~
+- ~~[背景の描き方](./background-art)~~
+- ~~[構図とレイアウト](./composition)~~
+- ~~[色彩設計](./color-design)~~
 
 ### 5. 上級テクニック
-- ~~[エフェクトの描き方](/posts/digital-art/effects)~~
-- ~~[質感表現の応用](/posts/digital-art/advanced-textures)~~
-- ~~[動きの表現](/posts/digital-art/dynamic-poses)~~
-- ~~[感情表現とストーリーテリング](/posts/digital-art/storytelling)~~
+- ~~[エフェクトの描き方](./effects)~~
+- ~~[質感表現の応用](./advanced-textures)~~
+- ~~[動きの表現](./dynamic-poses)~~
+- ~~[感情表現とストーリーテリング](./storytelling)~~
 
 ## これから始める方へ
 
