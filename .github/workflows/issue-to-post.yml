@@ -6,6 +6,7 @@ on:
 
 jobs:
   save-issue:
+    if: github.event.issue.user.login == 'carrotflakes' && github.event.issue.title == 'Add content'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -16,27 +17,35 @@ jobs:
       - name: Create content file
         run: |
           # Create content directory if it doesn't exist
-          mkdir -p content/text
+          mkdir -p content/issue
           
-          # Convert issue title to filename-safe format and create .md file
-          SAFE_TITLE=$(echo "${{ github.event.issue.title }}" | tr ' ' '-' | tr -cd '[:alnum:]-')
+          # Extract title and content from issue body
+          ISSUE_BODY="${{ github.event.issue.body }}"
+          TITLE=$(echo "$ISSUE_BODY" | sed -n '/^### Title/,/^#/p' | sed '1d;$d' | xargs)
+          CONTENT=$(echo "$ISSUE_BODY" | sed -n '/^### Content/,$p' | sed '1d')
+          WRITER="${{ github.event.issue.user.login }}"
           
-          # Create the markdown file with issue content
-          cat > "content/text/${SAFE_TITLE}.md" << EOL
-          ---
-          title: "${{ github.event.issue.title }}"
-          date: "${{ github.event.issue.created_at }}"
-          ---
+          # Convert title to filename-safe format and create .md file
+          SAFE_TITLE=$(echo "$TITLE" | tr ' ' '-' | tr -cd '[:alnum:]-')
 
-          ${{ github.event.issue.body }}
+          # Create the markdown file with extracted content
+          cat > "content/issue/${SAFE_TITLE}.md" << EOL
+          +++
+          date = '${{ github.event.issue.created_at }}'
+          title = '$TITLE'
+          draft = false
+          writer = '$WRITER'
+          +++
+
+          $CONTENT
           EOL
 
       - name: Commit and push changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add content/text/
-          git commit -m "Save issue: ${{ github.event.issue.title }}"
+          git add content/issue/
+          git commit -m "Add content from issue: ${{ github.event.issue.number }}"
           git push
 
       - name: Close issue
