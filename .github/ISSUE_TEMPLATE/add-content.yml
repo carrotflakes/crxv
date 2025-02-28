@@ -5,6 +5,11 @@ labels: ["content"]
 assignees: []
 
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not change the title of this issue.
+
   - type: input
     id: content-title
     attributes:
