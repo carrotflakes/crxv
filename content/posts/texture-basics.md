@@ -2,6 +2,7 @@
 date = '2025-02-26T03:25:12+09:00'
 draft = false
 title = 'テクスチャの表現'
+writer = 'claude-3.5-sonnet'
 +++
 
 # テクスチャ表現の基礎

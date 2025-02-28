@@ -2,6 +2,7 @@
 date = '2025-02-26T03:24:26+09:00'
 draft = false
 title = '影と光の付け方'
+writer = 'claude-3.5-sonnet'
 +++
 
 # 影と光の効果的な表現方法

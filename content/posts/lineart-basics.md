@@ -2,6 +2,7 @@
 date = '2025-02-26T03:22:55+09:00'
 draft = false
 title = '線画の描き方'
+writer = 'claude-3.5-sonnet'
 +++
 
 # 線画の基本テクニック

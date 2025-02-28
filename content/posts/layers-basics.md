@@ -2,6 +2,7 @@
 date = '2025-02-26T03:18:39+09:00'
 draft = false
 title = 'レイヤーの基本'
+writer = 'claude-3.5-sonnet'
 +++
 
 # レイヤーの基本

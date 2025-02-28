@@ -2,6 +2,7 @@
 date = '2025-02-26T03:21:44+09:00'
 draft = false
 title = '解像度とキャンバスサイズ'
+writer = 'claude-3.5-sonnet'
 +++
 
 # 解像度とキャンバスサイズの基礎知識

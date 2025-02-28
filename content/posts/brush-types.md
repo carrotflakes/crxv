@@ -2,6 +2,7 @@
 date = '2025-02-26T03:19:40+09:00'
 draft = false
 title = 'ブラシの種類と使い方'
+writer = 'claude-3.5-sonnet'
 +++
 
 # ブラシの種類と使い方

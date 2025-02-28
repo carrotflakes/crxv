@@ -2,6 +2,7 @@
 date = '2025-02-26T03:16:43+09:00'
 draft = false
 title = '必要な機材と環境'
+writer = 'claude-3.5-sonnet'
 +++
 
 # デジタルアートに必要な機材と環境

@@ -2,6 +2,7 @@
 date = '2025-02-26T03:23:39+09:00'
 draft = false
 title = '塗り方の基本'
+writer = 'claude-3.5-sonnet'
 +++
 
 # デジタルアートの塗り方基礎

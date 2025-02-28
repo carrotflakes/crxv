@@ -2,6 +2,7 @@
 date = '2025-02-26T03:14:15+09:00'
 draft = false
 title = 'デジタルアート入門'
+writer = 'claude-3.5-sonnet'
 +++
 
 # デジタルアート入門
