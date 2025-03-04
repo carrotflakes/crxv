@@ -1,4 +1,33 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on CRXV</title><link>https://carrotflakes.github.io/crxv/posts/</link><description>Recent content in Posts on CRXV</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Sat, 01 Mar 2025 08:33:04 +0000</lastBuildDate><atom:link href="https://carrotflakes.github.io/crxv/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>日本社会で夜型人間が生きやすくなるための具体的アプローチ</title><link>https://carrotflakes.github.io/crxv/posts/issue/issue-11/</link><pubDate>Sat, 01 Mar 2025 08:33:04 +0000</pubDate><guid>https://carrotflakes.github.io/crxv/posts/issue/issue-11/</guid><description>&lt;p>日本社会の中で夜型人間が自身の特性を受け入れつつ健康的に生活し、仕事や学業で力を発揮するには、&lt;strong>生活習慣の工夫&lt;/strong>や&lt;strong>職場環境の調整&lt;/strong>、そして利用可能な&lt;strong>社会制度の活用&lt;/strong>が重要です。以下にそれぞれ具体的なアプローチを示します。&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on CRXV</title><link>https://carrotflakes.github.io/crxv/posts/</link><description>Recent content in Posts on CRXV</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Tue, 04 Mar 2025 07:34:24 +0000</lastBuildDate><atom:link href="https://carrotflakes.github.io/crxv/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>コマンドの実行に時間がかかったとき終了を通知する</title><link>https://carrotflakes.github.io/crxv/posts/issue/issue-12/</link><pubDate>Tue, 04 Mar 2025 07:34:24 +0000</pubDate><guid>https://carrotflakes.github.io/crxv/posts/issue/issue-12/</guid><description>&lt;h2 class="heading" id="概要">
+ 概要
+ &lt;a class="anchor" href="#%e6%a6%82%e8%a6%81">#&lt;/a>
+&lt;/h2>
+&lt;p>コマンド実行に10秒以上かかったら、コマンド終了時に何秒かかったか音声で教えてくれるようになります。&lt;/p>
+&lt;h2 class="heading" id="前提">
+ 前提
+ &lt;a class="anchor" href="#%e5%89%8d%e6%8f%90">#&lt;/a>
+&lt;/h2>
+&lt;p>mac で zsh を使っている。&lt;/p>
+&lt;h2 class="heading" id="コード">
+ コード
+ &lt;a class="anchor" href="#%e3%82%b3%e3%83%bc%e3%83%89">#&lt;/a>
+&lt;/h2>
+&lt;p>&lt;code>.zshrc&lt;/code> に以下を追加する。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> timer_start &lt;span style="color:#f92672">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> TIMER_START&lt;span style="color:#f92672">=&lt;/span>$SECONDS
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> timer_end &lt;span style="color:#f92672">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> local duration&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$((&lt;/span> SECONDS &lt;span style="color:#f92672">-&lt;/span> TIMER_START &lt;span style="color:#66d9ef">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">((&lt;/span> duration &amp;gt; &lt;span style="color:#ae81ff">10&lt;/span> &lt;span style="color:#f92672">))&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> say &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>duration&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">秒かかりました&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>autoload -Uz add-zsh-hook
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>add-zsh-hook preexec timer_start
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>add-zsh-hook precmd timer_end
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>日本社会で夜型人間が生きやすくなるための具体的アプローチ</title><link>https://carrotflakes.github.io/crxv/posts/issue/issue-11/</link><pubDate>Sat, 01 Mar 2025 08:33:04 +0000</pubDate><guid>https://carrotflakes.github.io/crxv/posts/issue/issue-11/</guid><description>&lt;p>日本社会の中で夜型人間が自身の特性を受け入れつつ健康的に生活し、仕事や学業で力を発揮するには、&lt;strong>生活習慣の工夫&lt;/strong>や&lt;strong>職場環境の調整&lt;/strong>、そして利用可能な&lt;strong>社会制度の活用&lt;/strong>が重要です。以下にそれぞれ具体的なアプローチを示します。&lt;/p>
 &lt;h2 class="heading" id="生活習慣の改善工夫">
  生活習慣の改善・工夫
  &lt;a class="anchor" href="#%e7%94%9f%e6%b4%bb%e7%bf%92%e6%85%a3%e3%81%ae%e6%94%b9%e5%96%84%e5%b7%a5%e5%a4%ab">#&lt;/a>

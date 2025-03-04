@@ -1,0 +1,27 @@
+<!doctype html><html lang=ja dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width"><link rel=icon type=image/ico href=https://carrotflakes.github.io/crxv//favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://carrotflakes.github.io/crxv//favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://carrotflakes.github.io/crxv//favicon-32x32.png><link rel=icon type=image/png sizes=192x192 href=https://carrotflakes.github.io/crxv//android-chrome-192x192.png><link rel=apple-touch-icon sizes=180x180 href=https://carrotflakes.github.io/crxv//apple-touch-icon.png><meta name=description content><title>コマンドの実行に時間がかかったとき終了を通知する | CRXV
+</title><link rel=canonical href=https://carrotflakes.github.io/crxv/posts/issue/issue-12/><meta property="og:url" content="https://carrotflakes.github.io/crxv/posts/issue/issue-12/"><meta property="og:site_name" content="CRXV"><meta property="og:title" content="コマンドの実行に時間がかかったとき終了を通知する"><meta property="og:description" content='概要 # コマンド実行に10秒以上かかったら、コマンド終了時に何秒かかったか音声で教えてくれるようになります。
+前提 # mac で zsh を使っている。
+コード # .zshrc に以下を追加する。
+function timer_start { TIMER_START=$SECONDS } function timer_end { local duration=$(( SECONDS - TIMER_START )) if (( duration > 10 )); then say "${duration}秒かかりました" fi } autoload -Uz add-zsh-hook add-zsh-hook preexec timer_start add-zsh-hook precmd timer_end'><meta property="og:locale" content="ja"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-03-04T07:34:24+00:00"><meta property="article:modified_time" content="2025-03-04T07:34:24+00:00"><link rel=stylesheet href=/crxv/assets/combined.min.db1f6bdda2e5a4d5c9a316aa295aaeba691b0d6154397bbb6787fea95b273e6a.css media=all></head><body class=auto><div class=content><header><div class=header><h1 class=header-title><a href=https://carrotflakes.github.io/crxv/>CRXV</a></h1><div class=flex><p class=small><a href=https://carrotflakes.github.io/crxv/>/home</a></p><p class=small><a href=https://carrotflakes.github.io/crxv/posts/>/posts</a></p><p class=small><a href=https://github.com/carrotflakes/crxv>/github</a></p></div></div></header><main class=main><div><div class=single-intro-container><h1 class=single-title>コマンドの実行に時間がかかったとき終了を通知する</h1><p class=single-readtime><time datetime=2025-03-04T07:34:24+00:00>March 4, 2025</time>
+&nbsp; · &nbsp;
+carrotflakes</p></div><div class=single-content><h2 class=heading id=概要>概要
+<a class=anchor href=#%e6%a6%82%e8%a6%81>#</a></h2><p>コマンド実行に10秒以上かかったら、コマンド終了時に何秒かかったか音声で教えてくれるようになります。</p><h2 class=heading id=前提>前提
+<a class=anchor href=#%e5%89%8d%e6%8f%90>#</a></h2><p>mac で zsh を使っている。</p><h2 class=heading id=コード>コード
+<a class=anchor href=#%e3%82%b3%e3%83%bc%e3%83%89>#</a></h2><p><code>.zshrc</code> に以下を追加する。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span><span style=color:#66d9ef>function</span> timer_start <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>  TIMER_START<span style=color:#f92672>=</span>$SECONDS
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> timer_end <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>  local duration<span style=color:#f92672>=</span><span style=color:#66d9ef>$((</span> SECONDS <span style=color:#f92672>-</span> TIMER_START <span style=color:#66d9ef>))</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#f92672>((</span> duration &gt; <span style=color:#ae81ff>10</span> <span style=color:#f92672>))</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    say <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>duration<span style=color:#e6db74>}</span><span style=color:#e6db74>秒かかりました&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>autoload -Uz add-zsh-hook
+</span></span><span style=display:flex><span>add-zsh-hook preexec timer_start
+</span></span><span style=display:flex><span>add-zsh-hook precmd timer_end
+</span></span></code></pre></div></div><div class=single-pagination><hr><div class=flex><div class=single-pagination-prev><div class=single-pagination-container-prev><div class=single-pagination-text>←</div><div class=single-pagination-text><a href=/crxv/posts/issue/issue-11/>日本社会で夜型人間が生きやすくなるための具体的アプローチ</a></div></div></div><div class=single-pagination-next></div></div><hr></div><div class=back-to-top><a href=#top>back to top</a></div></div></main></div><footer><p>Powered by
+<a href=https://gohugo.io/>Hugo</a>
+and
+<a href=https://github.com/tomfran/typo>tomfran/typo</a></p></footer></body><script src=/crxv/js/theme-switch.js></script><script defer src=/crxv/js/copy-code.js></script></html>
