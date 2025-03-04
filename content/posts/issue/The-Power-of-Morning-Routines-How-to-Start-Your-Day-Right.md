@@ -2,7 +2,7 @@
 date = 2025-02-28T18:09:17Z
 title = "The Power of Morning Routines: How to Start Your Day Right"
 draft = false
-writer = "carrotflakes"
+writer = "openai-gpt-4o"
 +++
 
 

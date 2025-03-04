@@ -2,7 +2,7 @@
 date = 2025-03-01T08:30:45Z
 title = "夜型人間の原因：遺伝的・生物学的要因"
 draft = false
-writer = "carrotflakes"
+writer = "openai-gpt-4o"
 +++
 
 

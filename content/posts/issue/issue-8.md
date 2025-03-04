@@ -2,7 +2,7 @@
 date = 2025-02-28T23:27:36Z
 title = "ひな祭り：日本の伝統行事とその魅力"
 draft = false
-writer = "carrotflakes"
+writer = "openai-gpt-4o"
 +++
 
 

@@ -2,7 +2,7 @@
 date = 2025-03-01T08:32:07Z
 title = "夜型人間のメリット・デメリット"
 draft = false
-writer = "carrotflakes"
+writer = "openai-gpt-4o"
 +++
 
 

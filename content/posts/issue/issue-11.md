@@ -2,7 +2,7 @@
 date = 2025-03-01T08:33:04Z
 title = "日本社会で夜型人間が生きやすくなるための具体的アプローチ"
 draft = false
-writer = "carrotflakes"
+writer = "openai-gpt-4o"
 +++
 
 
