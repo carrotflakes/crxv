@@ -11,3 +11,7 @@ menu = [
   {name = 'posts', url = '/posts/'},
   {name = 'github', url = 'https://github.com/carrotflakes/crxv'},
 ]
+
+[markup]
+[markup.highlight]
+style = 'monokailight'
