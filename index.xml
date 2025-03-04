@@ -13,15 +13,15 @@
  &lt;a class="anchor" href="#%e3%82%b3%e3%83%bc%e3%83%89">#&lt;/a>
 &lt;/h2>
 &lt;p>&lt;code>.zshrc&lt;/code> に以下を追加する。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> timer_start &lt;span style="color:#f92672">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> TIMER_START&lt;span style="color:#f92672">=&lt;/span>$SECONDS
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">function&lt;/span> timer_start &lt;span style="color:#f92672">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">TIMER_START&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#111">$SECONDS&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">function&lt;/span> timer_end &lt;span style="color:#f92672">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> local duration&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$((&lt;/span> SECONDS &lt;span style="color:#f92672">-&lt;/span> TIMER_START &lt;span style="color:#66d9ef">))&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">((&lt;/span> duration &amp;gt; &lt;span style="color:#ae81ff">10&lt;/span> &lt;span style="color:#f92672">))&lt;/span>; &lt;span style="color:#66d9ef">then&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> say &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>duration&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">秒かかりました&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">fi&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#00a8c8">function&lt;/span> timer_end &lt;span style="color:#f92672">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#111">local&lt;/span> &lt;span style="color:#111">duration&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#00a8c8">$((&lt;/span> SECONDS &lt;span style="color:#f92672">-&lt;/span> TIMER_START &lt;span style="color:#00a8c8">))&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">if&lt;/span> &lt;span style="color:#f92672">((&lt;/span> duration &amp;gt; &lt;span style="color:#ae81ff">10&lt;/span> &lt;span style="color:#f92672">))&lt;/span>&lt;span style="color:#111">;&lt;/span> &lt;span style="color:#00a8c8">then&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> say &lt;span style="color:#d88200">&amp;#34;&lt;/span>&lt;span style="color:#d88200">${&lt;/span>&lt;span style="color:#111">duration&lt;/span>&lt;span style="color:#d88200">}&lt;/span>&lt;span style="color:#d88200">秒かかりました&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#00a8c8">fi&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">}&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>autoload -Uz add-zsh-hook

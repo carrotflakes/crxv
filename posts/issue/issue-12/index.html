@@ -7,15 +7,15 @@ function timer_start { TIMER_START=$SECONDS } function timer_end { local duratio
 carrotflakes</p></div><div class=single-content><h2 class=heading id=概要>概要
 <a class=anchor href=#%e6%a6%82%e8%a6%81>#</a></h2><p>コマンド実行に10秒以上かかったら、コマンド終了時に何秒かかったか音声で教えてくれるようになります。</p><h2 class=heading id=前提>前提
 <a class=anchor href=#%e5%89%8d%e6%8f%90>#</a></h2><p>mac で zsh を使っている。</p><h2 class=heading id=コード>コード
-<a class=anchor href=#%e3%82%b3%e3%83%bc%e3%83%89>#</a></h2><p><code>.zshrc</code> に以下を追加する。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span><span style=color:#66d9ef>function</span> timer_start <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>  TIMER_START<span style=color:#f92672>=</span>$SECONDS
+<a class=anchor href=#%e3%82%b3%e3%83%bc%e3%83%89>#</a></h2><p><code>.zshrc</code> に以下を追加する。</p><div class=highlight><pre tabindex=0 style=color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span><span style=color:#00a8c8>function</span> timer_start <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>TIMER_START</span><span style=color:#f92672>=</span><span style=color:#111>$SECONDS</span>
 </span></span><span style=display:flex><span><span style=color:#f92672>}</span>
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> timer_end <span style=color:#f92672>{</span>
-</span></span><span style=display:flex><span>  local duration<span style=color:#f92672>=</span><span style=color:#66d9ef>$((</span> SECONDS <span style=color:#f92672>-</span> TIMER_START <span style=color:#66d9ef>))</span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span> <span style=color:#f92672>((</span> duration &gt; <span style=color:#ae81ff>10</span> <span style=color:#f92672>))</span>; <span style=color:#66d9ef>then</span>
-</span></span><span style=display:flex><span>    say <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>duration<span style=color:#e6db74>}</span><span style=color:#e6db74>秒かかりました&#34;</span>
-</span></span><span style=display:flex><span>  <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span><span style=color:#00a8c8>function</span> timer_end <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>  <span style=color:#111>local</span> <span style=color:#111>duration</span><span style=color:#f92672>=</span><span style=color:#00a8c8>$((</span> SECONDS <span style=color:#f92672>-</span> TIMER_START <span style=color:#00a8c8>))</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>if</span> <span style=color:#f92672>((</span> duration &gt; <span style=color:#ae81ff>10</span> <span style=color:#f92672>))</span><span style=color:#111>;</span> <span style=color:#00a8c8>then</span>
+</span></span><span style=display:flex><span>    say <span style=color:#d88200>&#34;</span><span style=color:#d88200>${</span><span style=color:#111>duration</span><span style=color:#d88200>}</span><span style=color:#d88200>秒かかりました&#34;</span>
+</span></span><span style=display:flex><span>  <span style=color:#00a8c8>fi</span>
 </span></span><span style=display:flex><span><span style=color:#f92672>}</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>autoload -Uz add-zsh-hook
