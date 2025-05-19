@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on CRXV</title><link>https://carrotflakes.github.io/crxv/</link><description>Recent content in Home on CRXV</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Tue, 04 Mar 2025 07:34:24 +0000</lastBuildDate><atom:link href="https://carrotflakes.github.io/crxv/index.xml" rel="self" type="application/rss+xml"/><item><title>コマンドの実行に時間がかかったとき終了を通知する</title><link>https://carrotflakes.github.io/crxv/posts/issue/issue-12/</link><pubDate>Tue, 04 Mar 2025 07:34:24 +0000</pubDate><guid>https://carrotflakes.github.io/crxv/posts/issue/issue-12/</guid><description>&lt;h2 class="heading" id="概要">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Home on CRXV</title><link>https://carrotflakes.github.io/crxv/</link><description>Recent content in Home on CRXV</description><generator>Hugo</generator><language>ja</language><lastBuildDate>Mon, 19 May 2025 06:16:29 +0000</lastBuildDate><atom:link href="https://carrotflakes.github.io/crxv/index.xml" rel="self" type="application/rss+xml"/><item><title>メジャーなプログラミング言語一覧と、その型システムの表現力の高さ、型安全性</title><link>https://carrotflakes.github.io/crxv/posts/issue/issue-13/</link><pubDate>Mon, 19 May 2025 06:16:29 +0000</pubDate><guid>https://carrotflakes.github.io/crxv/posts/issue/issue-13/</guid><description>&lt;p>プログラミング言語はコンピュータプログラムを書くためのツールですが、それぞれの言語は異なる設計哲学や特徴を持っています。中でも型システムは、データの管理や操作方法を決定づける重要な要素です。今回は、メジャーなプログラミング言語とその型システムの表現力、型安全性についてまとめます。&lt;/p>
+&lt;h2 class="heading" id="型システムとは">
+ 型システムとは？
+ &lt;a class="anchor" href="#%e5%9e%8b%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%a8%e3%81%af">#&lt;/a>
+&lt;/h2>
+&lt;p>型システムは、プログラミング言語においてデータ型についてのルールを提供する仕組みです。このルールに基づいて、正しいプログラムかどうかをコンパイラやインタプリタがチェックします。型システムの主な目的は、プログラムの誤りを早期に発見し、安全で効率的なコードを書くことを可能にすることです。&lt;/p>
+&lt;h2 class="heading" id="主なプログラミング言語とその型システム">
+ 主なプログラミング言語とその型システム
+ &lt;a class="anchor" href="#%e4%b8%bb%e3%81%aa%e3%83%97%e3%83%ad%e3%82%b0%e3%83%a9%e3%83%9f%e3%83%b3%e3%82%b0%e8%a8%80%e8%aa%9e%e3%81%a8%e3%81%9d%e3%81%ae%e5%9e%8b%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0">#&lt;/a>
+&lt;/h2>
+&lt;h3 class="heading" id="1-c言語">
+ 1. C言語
+ &lt;a class="anchor" href="#1-c%e8%a8%80%e8%aa%9e">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>型システムの表現力&lt;/strong>: 静的型付けで、型はコンパイル時にチェックされます。しかし、表現力は比較的低く、型の不一致をシステム側が自動で補正する場合が多いです。&lt;/li>
+&lt;li>&lt;strong>型安全性&lt;/strong>: 低い。ポインタを使ってメモリを直接操作できるため、型安全性はあまり保証されていません。&lt;/li>
+&lt;/ul>
+&lt;h3 class="heading" id="2-java">
+ 2. Java
+ &lt;a class="anchor" href="#2-java">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>型システムの表現力&lt;/strong>: 静的型付けでガベージコレクションを持ち、オブジェクト指向型システムを強力にサポートします。ジェネリクスによって型をさらに細かく指定可能です。&lt;/li>
+&lt;li>&lt;strong>型安全性&lt;/strong>: 比較的高い。強い型付けによって型エラーを早期に検出します。&lt;/li>
+&lt;/ul>
+&lt;h3 class="heading" id="3-python">
+ 3. Python
+ &lt;a class="anchor" href="#3-python">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>型システムの表現力&lt;/strong>: 動的型付けで、実行時に型を決定します。型ヒントにより静的型チェックを補助することも可能です。&lt;/li>
+&lt;li>&lt;strong>型安全性&lt;/strong>: 中程度。動的型付けにより柔軟性は高いものの、実行時エラーが生じる可能性があります。&lt;/li>
+&lt;/ul>
+&lt;h3 class="heading" id="4-c">
+ 4. C#
+ &lt;a class="anchor" href="#4-c">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>型システムの表現力&lt;/strong>: 静的型付けで、強い型チェックとインタフェース・抽象クラスによる構造的なプログラミングを可能にします。ジェネリクスも強力です。&lt;/li>
+&lt;li>&lt;strong>型安全性&lt;/strong>: 高い。nullable型や型推論による型安全性が保証されています。&lt;/li>
+&lt;/ul>
+&lt;h3 class="heading" id="5-javascript">
+ 5. JavaScript
+ &lt;a class="anchor" href="#5-javascript">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>型システムの表現力&lt;/strong>: 動的型付けながらも、TypeScriptとして型を追加して安全性を高めることができます。&lt;/li>
+&lt;li>&lt;strong>型安全性&lt;/strong>: 低め。柔軟な型付けにより自由度は高いが、その分型エラーが発生しやすいです。&lt;/li>
+&lt;/ul>
+&lt;h3 class="heading" id="6-swift">
+ 6. Swift
+ &lt;a class="anchor" href="#6-swift">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>型システムの表現力&lt;/strong>: 静的型付けで、強力な型推論とジェネリクスをサポートします。オプショナル型による安全性が強化されています。&lt;/li>
+&lt;li>&lt;strong>型安全性&lt;/strong>: 非常に高い。nullを扱う際の厳密な管理が可能です。&lt;/li>
+&lt;/ul>
+&lt;h3 class="heading" id="7-haskell">
+ 7. Haskell
+ &lt;a class="anchor" href="#7-haskell">#&lt;/a>
+&lt;/h3>
+&lt;ul>
+&lt;li>&lt;strong>型システムの表現力&lt;/strong>: 函数型言語で、非常に表現力豊かな静的型システムを持ちます。型推論が強力で、しばしば型を書く必要がない場合もあります。&lt;/li>
+&lt;li>&lt;strong>型安全性&lt;/strong>: 極めて高い。型推論とモナドによる安全な副作用処理が実現されています。&lt;/li>
+&lt;/ul>
+&lt;h2 class="heading" id="まとめ">
+ まとめ
+ &lt;a class="anchor" href="#%e3%81%be%e3%81%a8%e3%82%81">#&lt;/a>
+&lt;/h2>
+&lt;p>プログラミング言語の型システムは、それぞれに独自の哲学と利点を持っており、開発するプロジェクトや目的に応じて選択することが重要です。型安全性の高い言語はエラー管理が容易であり、大規模プロジェクトにおいて有利です。一方で、動的型付けの言語はスクリプトやプロトタイプ開発に適しています。あなたのプロジェクトに最適な言語を選ぶ際の参考にしていただければ幸いです。&lt;/p></description></item><item><title>コマンドの実行に時間がかかったとき終了を通知する</title><link>https://carrotflakes.github.io/crxv/posts/issue/issue-12/</link><pubDate>Tue, 04 Mar 2025 07:34:24 +0000</pubDate><guid>https://carrotflakes.github.io/crxv/posts/issue/issue-12/</guid><description>&lt;h2 class="heading" id="概要">
  概要
  &lt;a class="anchor" href="#%e6%a6%82%e8%a6%81">#&lt;/a>
 &lt;/h2>
